@@ -28,8 +28,7 @@
                     <form action="{{route('contact.destroy',$row->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" class="btn btn-danger"
-                        onclick="return confirm('คุณต้องการลบข้อมูล {{$row->name}} หรือไม่?')" value="ลบ">
+                        <input type="submit" value="ลบ" data-name="{{$row->name}}" class="btn btn-danger deleteform">
                     </form>
                 </td>
             </tr>
