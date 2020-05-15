@@ -27,10 +27,19 @@ class HomeController extends Controller
         // auth()->user()->removeRole('admin');
         // auth()->user()->syncRoles(['reader','writer']);
         // auth()->user()->removeRole('writer');
+
         if(auth()->user()->hasRole("admin")){
             // return "ฉันเป็น Admin";
+            $user=auth()->user();
+            // $user->syncPermissions(['manageuser','addpost','editpost','deletepost','readpost']);
+            // $user->revokePermissionTo('editpost');
+            // dd($user->hasAllPermissions(['manageuser','addpost','editpost','deletepost','readpost']));
             return redirect('/contact');
         }else{
+            $user=auth()->user();
+            // $user->givePermissionTo('readpost');
+            $user->syncPermissions(['addpost','editpost','deletepost','readpost']);
+
             return view('home');
         }
 
